@@ -217,10 +217,72 @@ for i in range(1, 10):
     print()
 '''
 
+'''
 import os
 with open("my_text.txt", mode="w", encoding="utf-8") as my_file:
     my_file.write("some random text\nsome more")
 
-#with open("my_text.txt", encoding="utf-8") as my_file:
-  #  print(my_file.read())
+with open("my_text.txt", encoding="utf-8") as my_file:
+    print(my_file.read())
 
+with open("my_text.txt", encoding="utf-8") as my_file:
+    line_num = 1
+    while True:
+        line = my_file.readline()
+        if not line:
+            break
+        print("line num: ", line_num)
+        word_list = line.split()
+        print("number of words: ", len(word_list))
+        char_count = 0
+        for word in word_list:
+            for char in word:
+                char_count += 1
+        ave_num_chars = char_count/len(word_list)
+        print("average word length: {:.2f}".format(ave_num_chars))
+        line_num += 1
+'''
+
+'''
+class Dog:
+    def __init__(self, name="", ghad=0, vazn=0):
+        self.name = name
+        self.ghad = ghad
+        self.vazn = vazn
+
+    def run(self):
+        print("{} the dog runs".format(self.name))
+
+    def eat(self):
+        print("{} the dog eats".format(self.name))
+
+    def bark(self):
+        print("{} the dog barks".format(self.name))
+
+def main():
+    spot = Dog("ashh", 10, 29)
+    spot.eat()
+
+main()
+'''
+
+class square:
+    def __init__(self, witdth="0", height="0"):
+        self.width = width
+        self.height = height
+    @property
+    def height(self):
+        print("{} the dog runs".format(self.name))
+        return self.__height
+
+    def width(self):
+        print("{} the dog eats".format(self.name))
+
+    def bark(self):
+        print("{} the dog barks".format(self.name))
+
+def main():
+    spot = Dog("ashh", 10, 29)
+    spot.eat()
+
+main()
