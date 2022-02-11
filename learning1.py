@@ -266,23 +266,97 @@ def main():
 main()
 '''
 
-class square:
-    def __init__(self, witdth="0", height="0"):
-        self.width = width
+'''
+class Square:
+    def __init__(self, height="0",width="0"):
         self.height = height
+        self.width = width
+
+
     @property
     def height(self):
-        print("{} the dog runs".format(self.name))
+        print("Retrieving the height")
         return self.__height
+    @height.setter
+    def height(self, value):
+        if value.isdigit():
+            self.__height = value
+        else:
+            print("please only enter a number for height")
 
+    @property
     def width(self):
-        print("{} the dog eats".format(self.name))
+        print("Retrieving the width")
+        return self.__width
 
-    def bark(self):
-        print("{} the dog barks".format(self.name))
+    @width.setter
+    def width(self, value):
+        if value.isdigit():
+            self.__width = value
+        else:
+            print("please only enter a number for width")
+
+    def get_area(self):
+        return int(self.__width) * int(self.__height)
+
 
 def main():
-    spot = Dog("ashh", 10, 29)
-    spot.eat()
+    square = Square()
+    height = input("enter Height:")
+    width = input("enter width:")
+    square.width = width
+    square.height = height
+    print("height", square.height)
+    print("width", square.width)
+    print("the area is = ", square.get_area())
+main()
+'''
+
+
+import random
+import math
+
+class Warrior:
+    def __init__(self, name="Warrior",health=0, attk_max=0, block_max=0):
+        self.name = name
+        self.health = health
+        self.attk_max = attk_max
+        self.block_max = block_max
+
+    def attack(self):
+        attk_amt = self.attk_max * (random.random() + 0.5)
+        return attk_amt
+    def block(self):
+        block_amt = self.block_max * (random.random() + 0.5)
+        return block_amt
+
+class Battle:
+    def start_fight(self, warrior1, warrior2):
+        while True:
+            if self.get_attack_result(warrior1,warrior2) == "Game Over":
+                break
+            if self.get_attack_result(warrior2,warrior1) == "Game Over":
+                break
+
+    def get_attack_result(self, warriorA, warriorB):
+        warrior_a_attack_amt = warriorA.attack()
+        warrior_b_block_amt = warriorB.block()
+        damage_2_warrior_b = math.ceil(warrior_a_attack_amt - warrior_b_block_amt)
+        warriorB.health = warriorB.health - damage_2_warrior_b
+        print("{} attacks {} and deal {} damage".format(warriorA.name, warriorB.name, damage_2_warrior_b))
+        print("{} is down to {} health".format(warriorB.name, warriorB.health))
+        if warriorB.health <= 0:
+            print("{} has died and {} is victorious".format(warriorB.name, warriorA.name))
+            return "Game Over"
+        else:
+            return "fight again"
+def main():
+    thor = Warrior("thor", 50, 20, 10)
+    loki = Warrior("loki", 50, 20, 10)
+    battle = Battle()
+    battle.start_fight(loki,thor)
 
 main()
+
+
+
