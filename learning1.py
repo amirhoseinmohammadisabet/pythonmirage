@@ -360,7 +360,7 @@ main()
 
 '''
 
-
+'''
 class  Animal:
     def __init__(self, birth_type="Unknown", appearance="Unknown", blooded="Unknown"):
         self.__birth_type = birth_type
@@ -424,4 +424,5 @@ def main():
     print(mammal1)
 
 main()
+'''
 
