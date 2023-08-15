@@ -1,8 +1,10 @@
 import numpy as np
+import random
 
 from equfunc import axbyz
 from equfunc import devint
 
-array = np.array([1, 2, 4, 7, 11, 16, 22, 29])
-devint(array)
+random_array = np.array([random.randint(1, 100) for _ in range(500)])
+
+devint(random_array)
 axbyz(5, 5, 5)
